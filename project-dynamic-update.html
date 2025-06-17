@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dynamic File Update – Marie Makarenko</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Marie Makarenko</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="tools.html">Tools</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Dynamic File Update Using Parameters in Power Query</h2>
+
+    <p><strong>Project Summary:</strong></p>
+    <p>
+      In this project, I transformed a manual and formula-heavy Excel reporting process into an efficient automated system using Power Query's M language.
+      I implemented a dynamic parameter that allows switching between different versions of a source file, reducing update time from minutes to just seconds.
+    </p>
+
+    <p><strong>Problem:</strong></p>
+    <p>
+      The previous solution used Excel formulas to refresh a secondary file based on a large source. Each version required manual updates and caused delays.
+    </p>
+
+    <p><strong>Solution:</strong></p>
+    <ul>
+      <li>Used Power Query parameter to dynamically reference different source file versions</li>
+      <li>Rebuilt the data flow logic in M to eliminate formulas and manual steps</li>
+      <li>Reduced update time from ~5 minutes to under 10 seconds</li>
+    </ul>
+
+    <p><strong>Result:</strong></p>
+    <p>
+      The new setup improved data accuracy and saved hours per week. It is now scalable, reusable, and easy for others to adapt to new datasets.
+    </p>
+
+    <h3>Before vs. After (Visual Comparison)</h3>
+    <img src="images/dynamic-update-example.png" alt="Power Query parameter screenshot" style="max-width:100%; border-radius:8px; margin:15px 0;" />
+
+    <h3>Key M Code Snippet</h3>
+    <pre><code class="language-m">
+// Power Query: Dynamic Source Selection
+let
+    ParameterFilePath = ParameterFile,
+    Source = Excel.Workbook(File.Contents(ParameterFilePath), null, true),
+    Data = Source{[Item="Sales",Kind="Sheet"]}[Data]
+in
+    Data
+</code></pre>
+
+    <p><strong>Tools used:</strong> Excel, Power Query (M language), Parameters</p>
+
+    <p><a href="projects.html" style="color:#4a90e2;">← Back to all projects</a></p>
+  </main>
+
+  <footer>
+    <p>© 2025 Marie Makarenko</p>
+  </footer>
+</body>
+</html>
