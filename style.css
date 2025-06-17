@@ -94,7 +94,33 @@ a {
 a:hover {
   text-decoration: underline;
 }
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
+.project-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-left: 4px solid #4a90e2;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+}
+
+.project-card h3 a {
+  text-decoration: none;
+  color: #1d4f91;
+}
+
+.project-card h3 a:hover {
+  text-decoration: underline;
+}
 /* Адаптивность для мобильных */
 @media (max-width: 600px) {
   body {
