@@ -50,11 +50,161 @@
     <pre><code class="language-m">
 // Power Query: Dynamic Source Selection
 let
-    ParameterFilePath = ParameterFile,
-    Source = Excel.Workbook(File.Contents(ParameterFilePath), null, true),
-    Data = Source{[Item="Sales",Kind="Sheet"]}[Data]
+    Source = Excel.Workbook(File.Contents(Excel.CurrentWorkbook(){[Name="Parameter"]}[Content]{0}[source]), null, true),
+    salesGrossCodes = {
+        "4110120003", "4110120004", "4110120005", "4110120010",
+        "4110120011", "4110120009", "4110120007", "4110120008",
+        "4110120012", "4110120000", "4110120015", "4110130000",
+        "4110100000", "4110100002", "4110100001", "4110100003",
+        "4110114000", "4110114001", "4110130000"
+    },
+    Sales_incentiveCodes = {"4110520001", "4110520002"},
+    Direct_materials = {"5510100001", "5210100000","5510100003", "5260100000","5510120003","5510100000"},
+    otherVariableCostCodes = {
+        "5520120000", "5520120001", "5520120002", "5520120006", "5520120003", "5520120004",
+        "5210120005", "5210120000", "5210120001", "5210120002", "5210120006", "5210120007",
+        "5210120008", "5210120003", "5210120004", "5220120000"
+    },
+    Depreciation = {"6130110300"},
+    warrantyExpenseCodes = {
+        "6150100004", "6150100005", "6150100006", 
+        "6150100000", "6150100003", "6150100002", "6150100001"
+    },
+    sellingCostCodes = {
+        "6160100002", "6160100000", "6160100001", "6160100010", "6160100012",
+        "6160100003", "6160100004", "6160100007", "6160100006", "6160100008",
+        "6160100009", "6160100011", "6160200000", "6160200001", "6160200002",
+        "6160200004", "6160200006", "6160200007", "6160200008"
+    },
+    InterestCodes = { "7110100000" },
+    InterestExpenseCodes = {
+        "7210100000", "7210100001", "7210100002", 
+        "7210100003", "7210100004"
+    },
+    OtherNonOperatingExpenseCodes = {
+        "6399900000", "6399900001"
+    },
+    IncomeTaxesCodes = {
+        "7910100000"
+    },
+    #"MISS P&L_Sheet" = Source{[Item="MISS P&L",Kind="Sheet"]}[Data],
+    #"Removed Top Rows" = Table.Skip(#"MISS P&L_Sheet", 4),
+    #"Added Custom" = Table.AddColumn(#"Removed Top Rows", "Category", each 
+        if List.Contains(salesGrossCodes, Text.From([Column5])) then "Sales(Gross)"
+        else if [Column6] = "Concession" or List.Contains(Sales_incentiveCodes, Text.From([Column5])) then "Sales incentive(Sales Deduction)"
+        else if [Column6] = "PRTU - Cummins" or [Column6] = "PRTZ - INAC" or [Column6] = "Adjustments & I/Co sales cogs" or [Column6] = "PRTK - KITS" or [Column6] = "PRSJ - HML Special" or [Column6] = "PRSL - HML Special LOCAL" or List.Contains( Direct_materials, Text.From([Column5])) then "Direct materials"
+        else if [Column6] = "FREE MAINTENANCE - MDT" or [Column6] = "FREE MAINTENANCE - LDT" or [Column6] = "FREE MAINTENANCE - LDT" or [Column6] = "FREE MAINTENANCE - HDT"  or List.Contains( otherVariableCostCodes, Text.From([Column5])) then "Other variable cost"
+        else if [Column6] = "AMORTIZATION" or List.Contains( Depreciation, Text.From([Column5])) then "Depreciation"
+        else if List.Contains( warrantyExpenseCodes, Text.From([Column5])) then "Warranty expenses"
+        else if List.Contains( sellingCostCodes, Text.From([Column5])) then "Selling cost"
+        else if List.Contains( InterestCodes, Text.From([Column5])) then "Interest and discount earned"
+        else if List.Contains( InterestExpenseCodes, Text.From([Column5])) then "Interest expenses-financial comp."
+        else if List.Contains( OtherNonOperatingExpenseCodes, Text.From([Column5])) then "Other non-operating expenses"
+        else if List.Contains( IncomeTaxesCodes, Text.From([Column5])) then "Income taxes"
+        else if [Column6] = "Net Income" then "Net income attributable to non-controlling interests"
+        else if [Column6] = "Other G&A" then "General expenses"
+        else ""),
+    #"Grouped Rows" = Table.Group(#"Added Custom", {"Category"}, {{"4", each List.Sum([Column8]), type any}, {"5", each List.Sum([Column9]), type any}, {"6", each List.Sum([Column10]), type any}, {"7", each List.Sum([Column11]), type any}, {"8", each List.Sum([Column12]), type any}, {"9", each List.Sum([Column13]), type any}, {"10", each List.Sum([Column14]), type any}, {"11", each List.Sum([Column15]), type any}, {"12", each List.Sum([Column16]), type any}, {"1", each List.Sum([Column17]), type any}, {"2", each List.Sum([Column18]), type any}, {"3", each List.Sum([Column19]), type any}}),
+    
+    #"Filtered Rows" = Table.SelectRows(#"Grouped Rows", each ([Category] <> "")),
+
+    #"Divided Column" = Table.TransformColumns(#"Filtered Rows", {
+        {"4", each _ / 1000000, type number},
+        {"5", each _ / 1000000, type number},
+        {"6", each _ / 1000000, type number},
+        {"7", each _ / 1000000, type number},
+        {"8", each _ / 1000000, type number},
+        {"9", each _ / 1000000, type number},
+        {"10", each _ / 1000000, type number},
+        {"11", each _ / 1000000, type number},
+        {"12", each _ / 1000000, type number},
+         {"1", each _ / 1000000, type number},
+          {"2", each _ / 1000000, type number},
+           {"3", each _ / 1000000, type number}
+    }),
+
+    // Корректировка General expenses
+    #"Adjusted General Expenses" =
+        let
+            general = Table.SelectRows(#"Divided Column", each [Category] = "General expenses"),
+            depreciation = Table.SelectRows(#"Divided Column", each [Category] = "Depreciation"),
+            warranty = Table.SelectRows(#"Divided Column", each [Category] = "Warranty expenses"),
+            otherRows = Table.SelectRows(#"Divided Column", each [Category] <> "General expenses"),
+            adjustedGeneral = Table.TransformColumns(general, {
+                {"4", each _ - depreciation{0}[4] - warranty{0}[4]},
+                {"5", each _ - depreciation{0}[5] - warranty{0}[5]},
+                {"6", each _ - depreciation{0}[6] - warranty{0}[6]},
+                {"7", each _ - depreciation{0}[7] - warranty{0}[7]},
+                {"8", each _ - depreciation{0}[8] - warranty{0}[8]},
+                {"9", each _ - depreciation{0}[9] - warranty{0}[9]},
+                {"10", each _ - depreciation{0}[10] - warranty{0}[10]},
+                {"11", each _ - depreciation{0}[11] - warranty{0}[11]},
+                {"12", each _ - depreciation{0}[12] - warranty{0}[12]},
+                {"1", each _ - depreciation{0}[12] - warranty{0}[1]},
+                {"2", each _ - depreciation{0}[12] - warranty{0}[2]},
+                {"3", each _ - depreciation{0}[12] - warranty{0}[3]}
+            })
+        in
+            Table.Combine({otherRows, adjustedGeneral}),
+
+    #"Negative Adjustment" = Table.FromRecords(
+        Table.TransformRows(#"Adjusted General Expenses", each
+            if [Category] = "Sales incentive(Sales Deduction)" or [Category]="Interest and discount earned" then
+                Record.TransformFields(_, {
+                    {"4", each _ * -1},
+                    {"5", each _ * -1},
+                    {"6", each _ * -1},
+                    {"7", each _ * -1},
+                    {"8", each _ * -1},
+                    {"9", each _ * -1},
+                    {"10", each _ * -1},
+                    {"11", each _ * -1},
+                    {"12", each _ * -1},
+                     {"1", each _ * -1},
+                      {"2", each _ * -1},
+                       {"3", each _ * -1}
+                })
+            else _
+        )
+    ),
+
+    #"Rounded Off" = Table.TransformColumns(#"Negative Adjustment", {
+        {"4", each Number.Round(_, 2), type number},
+        {"5", each Number.Round(_, 2), type number},
+        {"6", each Number.Round(_, 2), type number},
+        {"7", each Number.Round(_, 2), type number},
+        {"8", each Number.Round(_, 2), type number},
+        {"9", each Number.Round(_, 2), type number},
+        {"10", each Number.Round(_, 2), type number},
+        {"11", each Number.Round(_, 2), type number},
+        {"12", each Number.Round(_, 2), type number},
+        {"1", each Number.Round(_, 2), type number},
+        {"2", each Number.Round(_, 2), type number},
+        {"3", each Number.Round(_, 2), type number}
+    }),
+
+    #"Added Conditional Column" = Table.AddColumn(#"Rounded Off", "Index", each 
+        if [Category] = "Sales(Gross)" then 1 
+        else if [Category] = "Sales incentive(Sales Deduction)" then 2 
+        else if [Category] = "Direct materials" then 3 
+        else if [Category] = "Other variable cost" then 5 
+        else if [Category] = "Depreciation" then 7 
+        else if [Category] = "Warranty expenses" then 9 
+        else if [Category] = "Selling cost" then 10 
+        else if [Category] = "General expenses" then 11 
+        else if [Category] = "Interest and discount earned" then 13 
+        else if [Category] = "Interest expenses-financial comp." then 18 
+        else if [Category] = "Other non-operating expenses" then 22 
+        else if [Category] = "Income taxes" then 25 
+        else if [Category] = "Net income attributable to non-controlling interests" then 27 
+        else null),
+
+    #"Appended Query" = Table.Combine({#"Added Conditional Column", Query2}),
+    #"Changed Type" = Table.TransformColumnTypes(#"Appended Query",{{"Index", Int64.Type}}),
+    #"Sorted Rows" = Table.Sort(#"Changed Type",{{"Index", Order.Ascending}}),
+    #"Removed Columns" = Table.RemoveColumns(#"Sorted Rows",{"Index"})
 in
-    Data
+    #"Removed Columns"
 </code></pre>
 
     <p><strong>Tools used:</strong> Excel, Power Query (M language), Parameters</p>
