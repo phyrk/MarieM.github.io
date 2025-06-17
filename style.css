@@ -1,0 +1,108 @@
+/* Reset и базовые стили */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9fafb;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+header {
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+h1 {
+  font-size: 2.4rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #34495e;
+  margin-bottom: 15px;
+}
+
+h3 {
+  color: #3a5068;
+  margin-bottom: 10px;
+}
+
+nav {
+  margin-bottom: 15px;
+}
+
+nav a {
+  color: #4a90e2;
+  text-decoration: none;
+  margin-right: 15px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #1d4f91;
+}
+
+nav a.active {
+  color: #1d4f91;
+  border-bottom: 2px solid #1d4f91;
+  padding-bottom: 2px;
+}
+
+main {
+  background-color: #ffffff;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(100, 100, 100, 0.1);
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+footer {
+  margin-top: 40px;
+  padding-top: 10px;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Ссылки внутри списков */
+a {
+  color: #4a90e2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+    max-width: 100%;
+  }
+  nav a {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+}
