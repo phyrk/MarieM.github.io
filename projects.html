@@ -9,6 +9,7 @@
 <body>
   <header>
     <h1>Marie Makarenko</h1>
+    <p>Senior Data Analyst | Data Automation | Power BI | SQL | Python</p>
     <nav>
       <a href="index.html">Home</a>
       <a href="projects.html" class="active">Projects</a>
@@ -18,24 +19,35 @@
   </header>
 
   <main>
-    <h2>Selected Projects</h2>
-    <p>Explore practical data analytics and automation solutions I've built using Power BI, Power Query, Power Automate, Python, and more.</p>
+    <section>
+      <h2>Projects & Case Studies</h2>
+      <p>
+        Below is a selection of real-world analytics and automation solutions I've delivered using Power BI, Power Query, Power Automate, SQL, and Python.
+        Each project focuses on solving practical business problems through clean, scalable automation.
+      </p>
+    </section>
 
-    <div class="project-section">
+    <!-- SECTION: Power Platform -->
+    <section class="project-section">
       <h2>📊 Power BI / Power Platform</h2>
 
       <div class="project-card">
         <h3><a href="project-dynamic-update.html">Dynamic File Update Using Parameters in Power Query</a></h3>
-        <p>A case study showing how I reduced file refresh time from minutes to seconds by replacing formulas with parameter-driven logic in Power Query.</p>
+        <p>
+          A case study showing how I reduced file refresh time from minutes to seconds by replacing formulas with parameter-driven logic in Power Query.
+        </p>
       </div>
 
       <div class="project-card">
         <h3><a href="project-powerautomate-cleanup.html">Power Automate – Automated Data Cleanup Workflow</a></h3>
-        <p>This flow automatically cleans and formats incoming Excel data from shared folders and uploads results to SharePoint for collaboration.</p>
+        <p>
+          This flow automatically cleans and formats incoming Excel data from shared folders and uploads results to SharePoint for collaboration.
+        </p>
       </div>
-    </div>
+    </section>
 
-    <div class="project-section">
+    <!-- SECTION: Finance Automation -->
+    <section class="project-section">
       <h2>💼 Finance Automation & Reporting</h2>
 
       <div class="project-card">
@@ -46,37 +58,17 @@
       </div>
 
       <div class="project-card">
-        <h3>Automated Financial Reporting Solution (Python)</h3>
+        <h3>Automated Financial Reporting Solutions (Python)</h3>
         <p>
-          Created a Python script leveraging AI tools to automate report narrative summaries and detect anomalies, enhancing the efficiency and quality of financial and operational reports.
+          Projects built using Python to support financial data validation, reporting automation, and anomaly detection.
         </p>
-      </div>
-    </div>
 
-    <div class="project-section">
-      <h2>🐍 Python Automation</h2>
+        <div class="subproject">
+          <h4>📌 Narrative Report Generator with AI</h4>
+          <p>
+            Created a Python script leveraging AI tools (like OpenAI) to automate report narrative summaries and detect anomalies in financial and operational datasets.
+          </p>
+        </div>
 
-      <div class="project-card">
-        <h3>Excel Remittance Validator for SAP Clearing</h3>
-        <p>
-          A Python script that validates and processes remittance Excel files submitted by a provider. It checks file completeness, merges claim data with a provider list, and generates SAP-compatible references for automatic invoice clearing.
-        </p>
-        <ul>
-          <li>✅ Validates Excel files by payment date</li>
-          <li>✅ Merges claims with provider master data</li>
-          <li>✅ Generates SAP reference numbers</li>
-          <li>✅ Outputs structured Excel report for accounting</li>
-        </ul>
-        <a href="https://gist.github.com/phyrk/603bb4d5f67bac0d01fbe807319cf48e" target="_blank" class="button">
-          🔍 View Full Code on GitHub Gist
-        </a>
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    <p>© 2025 Marie Makarenko</p>
-  </footer>
-</body>
-</html>
-
+        <div class="subproject">
+          <h4>📁 Excel Remittance Validator for SAP Clearing</h4>
