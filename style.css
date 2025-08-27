@@ -132,3 +132,27 @@ a:hover {
     margin-bottom: 10px;
   }
 }
+.tool-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.tool-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #0066cc;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.tool-button:hover {
+  background-color: #004a99;
+}
+
