@@ -95,11 +95,11 @@ h2 {
 /* Changed to vertical layout and centered */
 .tool-buttons {
   display: flex;
-  flex-direction: column; /* vertical stack */
-  align-items: center;    /* horizontally center cards */
-  gap: 30px;              /* spacing between cards */
-  max-width: 220px;       /* limit container width */
-  margin: 0 auto 40px;    /* center container and add bottom margin */
+  flex-wrap: nowrap; /* no wrapping = one row */
+  justify-content: center;
+  gap: 40px;
+  overflow-x: auto; /* scroll if not enough space */
+  padding: 20px 0;
 }
 
 /* Individual card style */
