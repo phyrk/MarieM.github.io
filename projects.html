@@ -27,48 +27,39 @@
       </p>
     </section>
 
-    <!-- SECTION: Power Platform -->
-    <section class="project-section">
-      <h2>📊 Power BI / Power Platform</h2>
-
-      <div class="project-card">
-        <h3><a href="project-dynamic-update.html">Dynamic File Update Using Parameters in Power Query</a></h3>
-        <p>
-          A case study showing how I reduced file refresh time from minutes to seconds by replacing formulas with parameter-driven logic in Power Query.
-        </p>
-      </div>
-
-      <div class="project-card">
-        <h3><a href="project-powerautomate-cleanup.html">Power Automate – Automated Data Cleanup Workflow</a></h3>
-        <p>
-          This flow automatically cleans and formats incoming Excel data from shared folders and uploads results to SharePoint for collaboration.
-        </p>
-      </div>
+    <section class="tool-buttons">
+      <a href="projects-powerquery.html" class="tool-button">⚙️ Power Query</a>
+      <a href="projects-python.html" class="tool-button">🐍 Python</a>
+      <a href="projects-powerautomate.html" class="tool-button">🔁 Power Automate</a>
+      <a href="projects-powerbi.html" class="tool-button">📊 Power BI</a>
     </section>
+  </main>
 
-    <!-- SECTION: Finance Automation -->
-    <section class="project-section">
-      <h2>💼 Finance Automation & Reporting</h2>
+  <footer>
+    <p>© 2025 Marie Makarenko</p>
+  </footer>
+</body>
+</html>
+.tool-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+  justify-content: center;
+}
 
-      <div class="project-card">
-        <h3>Automated Financial Reporting Solution (SQL, Power BI)</h3>
-        <p>
-          Built an automated reporting system connecting to SQL databases, eliminating manual data extraction and significantly reducing report preparation time while increasing data accuracy.
-        </p>
-      </div>
+.tool-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #0066cc;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
 
-      <div class="project-card">
-        <h3>Automated Financial Reporting Solutions (Python)</h3>
-        <p>
-          Projects built using Python to support financial data validation, reporting automation, and anomaly detection.
-        </p>
-
-        <div class="subproject">
-          <h4>📌 Narrative Report Generator with AI</h4>
-          <p>
-            Created a Python script leveraging AI tools (like OpenAI) to automate report narrative summaries and detect anomalies in financial and operational datasets.
-          </p>
-        </div>
-
-        <div class="subproject">
-          <h4>📁 Excel Remittance Validator for SAP Clearing</h4>
+.tool-button:hover {
+  background-color: #004a99;
+}
