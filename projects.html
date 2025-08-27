@@ -5,11 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Marie Makarenko – Projects</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .tool-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .tool-card {
+      text-align: center;
+      width: 150px;
+      transition: transform 0.2s;
+    }
+
+    .tool-card:hover {
+      transform: scale(1.05);
+    }
+
+    .tool-card img {
+      width: 100px;
+      height: auto;
+    }
+
+    .tool-card a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .intro-text {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      font-size: 1.1em;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>Marie Makarenko</h1>
-    <p>Senior Data Analyst | Data Automation | Power BI | SQL | Python</p>
     <nav>
       <a href="index.html">Home</a>
       <a href="projects.html" class="active">Projects</a>
@@ -19,20 +61,37 @@
   </header>
 
   <main>
-    <section>
-      <h2>Projects & Case Studies</h2>
-      <p>
-        Below is a selection of real-world analytics and automation solutions I've delivered using Power BI, Power Query, Power Automate, SQL, and Python.
-        Each project focuses on solving practical business problems through clean, scalable automation.
-      </p>
-    </section>
+    <h2>Projects & Case Studies</h2>
+    <p class="intro-text">
+      Below is a selection of real-world analytics and automation solutions I've delivered using Power BI, Power Query, Power Automate, SQL, and Python. Each project focuses on solving practical business problems through clean, scalable automation.
+    </p>
 
-    <section class="tool-buttons">
-      <a href="projects-powerquery.html" class="tool-button">⚙️ Power Query</a>
-      <a href="projects-python.html" class="tool-button">🐍 Python</a>
-      <a href="projects-powerautomate.html" class="tool-button">🔁 Power Automate</a>
-      <a href="projects-powerbi.html" class="tool-button">📊 Power BI</a>
-    </section>
+    <div class="tool-buttons">
+      <div class="tool-card">
+        <a href="power-query-projects.html">
+          <img src="images/powerquery.png" alt="Power Query" />
+          Power Query
+        </a>
+      </div>
+      <div class="tool-card">
+        <a href="python-projects.html">
+          <img src="images/python.png" alt="Python" />
+          Python
+        </a>
+      </div>
+      <div class="tool-card">
+        <a href="power-automate-projects.html">
+          <img src="images/powerautomate.png" alt="Power Automate" />
+          Power Automate
+        </a>
+      </div>
+      <div class="tool-card">
+        <a href="power-bi-projects.html">
+          <img src="images/powerbi.png" alt="Power BI" />
+          Power BI
+        </a>
+      </div>
+    </div>
   </main>
 
   <footer>
