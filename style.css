@@ -180,33 +180,35 @@ h2 {
 }
 
 .tool-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  display: block;
   margin-top: 30px;
 }
 
 .tool-card {
-  text-align: center;
-  width: 150px;
-  transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
 }
 
 .tool-card:hover {
-  transform: scale(1.05);
+  background-color: #f9f9f9;
 }
 
 .tool-card img {
-  width: 100px;
+  width: 50px;
   height: auto;
 }
 
-.tool-card a {
-  text-decoration: none;
-  color: #333;
+.tool-card span {
   font-weight: bold;
-  display: block;
-  margin-top: 10px;
+  font-size: 1.1em;
+  color: #333;
 }
+
 
