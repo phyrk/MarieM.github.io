@@ -1,81 +1,206 @@
-/* Обновляем .tool-buttons для горизонтального расположения */
-.tool-buttons {
-  display: flex;           /* горизонтальный флекс */
-  flex-wrap: wrap;         /* перенос строк если не помещается */
-  gap: 30px;               /* расстояние между карточками */
-  justify-content: center; /* центрируем по горизонтали */
-  margin-top: 30px;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Обновляем .tool-card */
-.tool-card {
-  display: flex;
-  flex-direction: column;  /* картинка сверху, текст снизу */
-  align-items: center;
-  width: 150px;            /* фиксированная ширина */
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  text-decoration: underline; /* подчёркивание текста */
+/* Basic body styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8fafc;
   color: #333;
-  font-weight: bold;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-  cursor: pointer; /* курсор при наведении */
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
 }
 
-.tool-card:hover {
-  background-color: #f9f9f9;
-  color: #1d4f91;        /* меняем цвет текста при наведении */
-  transform: scale(1.05); /* легкое увеличение */
+/* Center content and limit width */
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-/* Картинка */
-.tool-card img {
-  width: 100px;
-  height: auto;
+/* Header styles */
+header {
+  background-color: #ffffff;
+  padding: 25px 20px;
+  border-bottom: 2px solid #e2e8f0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Header title */
+header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #1d3557;
   margin-bottom: 10px;
 }
 
-/* Текст */
-.tool-card span {
-  display: block;
-  font-size: 1.1em;
-  color: inherit; /* цвет унаследован, меняется при hover */
+/* Navigation links */
+header nav a {
+  color: #457b9d;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 15px;
+  font-size: 1.1rem;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding-bottom: 5px;
+  border-bottom: 3px solid transparent;
+  display: inline-block;
 }
 
-/* Чтобы ссылки внутри карточек занимали всю площадь */
-.tool-card a {
-  color: inherit;
-  text-decoration: underline;
+/* Navigation hover and active state */
+header nav a:hover,
+header nav a.active {
+  color: #1d3557;
+  border-bottom-color: #1d3557;
+}
+
+/* Main content container */
+main {
+  flex-grow: 1;
+  background-color: #ffffff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+}
+
+/* Section headings */
+h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  color: #1d3557;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+/* Intro text block */
+.intro-text {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  font-size: 1.2rem;
+  color: #4a4a4a;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Container for tool/project cards */
+.tool-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+
+/* Individual card style */
+.tool-card {
+  background-color: #f1f5f9;
+  border-radius: 16px;
+  width: 180px;
+  padding: 25px 15px 35px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Адаптив для мобильных */
-@media (max-width: 600px) {
+/* Card hover effect */
+.tool-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(29, 53, 87, 0.3);
+}
+
+/* Images inside cards */
+.tool-card img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 15px;
+  filter: drop-shadow(1px 2px 1px rgba(0,0,0,0.1));
+}
+
+/* Links inside cards */
+.tool-card a {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #1d3557;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+/* Link hover inside cards */
+.tool-card a:hover {
+  color: #e63946;
+}
+
+/* Footer styles */
+footer {
+  background-color: #ffffff;
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: 50px;
+  border-top: 2px solid #e2e8f0;
+  font-size: 0.95rem;
+  color: #666;
+  font-weight: 600;
+}
+
+/* General links */
+a {
+  color: #457b9d;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* General link hover */
+a:hover {
+  color: #e63946;
+  text-decoration: underline;
+}
+
+/* Responsive styles for tablets */
+@media (max-width: 768px) {
+  .tool-buttons {
+    gap: 30px;
+  }
+  .tool-card {
+    width: 140px;
+    padding: 20px 12px 28px;
+  }
+  .tool-card img {
+    width: 90px;
+  }
+}
+
+/* Responsive styles for phones */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  header nav a {
+    font-size: 1rem;
+    margin: 0 10px;
+  }
+  main {
+    padding: 30px 20px;
+  }
   .tool-buttons {
     flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 25px;
   }
-
   .tool-card {
     width: 100%;
-    flex-direction: row;
-    align-items: center;
-    text-decoration: none; /* убираем подчеркивание в мобильном виде */
-  }
-
-  .tool-card img {
-    width: 50px;
-    margin-bottom: 0;
-    margin-right: 15px;
-  }
-
-  .tool-card span {
-    font-size: 1.1em;
-    color: #333;
+    max-width: 320px;
+    margin: 0 auto;
   }
 }
