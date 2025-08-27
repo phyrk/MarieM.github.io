@@ -1,186 +1,81 @@
-/* Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9fafb;
-  color: #333;
-  line-height: 1.6;
-  padding: 20px;
-}
-
-/* Центрирование всего содержимого */
-.wrapper {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* Header */
-header {
-  background-color: #f4f4f4;
-  padding: 20px;
-  text-align: center;
-  border-bottom: 2px solid #e2e8f0;
-  margin-bottom: 20px;
-}
-
-header h1 {
-  font-size: 2.4rem;
-  color: #2c3e50;
-  margin-bottom: 10px;
-}
-
-header nav a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-header nav a:hover {
-  color: #1d4f91;
-}
-
-header nav a.active {
-  color: #1d4f91;
-  border-bottom: 2px solid #1d4f91;
-  padding-bottom: 2px;
-}
-
-/* Main content */
-main {
-  background-color: #ffffff;
-  padding: 40px 25px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(100, 100, 100, 0.1);
-}
-
-/* Intro block */
-.intro-text {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 40px;
-  font-size: 1.1em;
-}
-
-/* Tool buttons block */
+/* Обновляем .tool-buttons для горизонтального расположения */
 .tool-buttons {
-  display: block;
+  display: flex;           /* горизонтальный флекс */
+  flex-wrap: wrap;         /* перенос строк если не помещается */
+  gap: 30px;               /* расстояние между карточками */
+  justify-content: center; /* центрируем по горизонтали */
   margin-top: 30px;
 }
 
+/* Обновляем .tool-card */
 .tool-card {
   display: flex;
+  flex-direction: column;  /* картинка сверху, текст снизу */
   align-items: center;
-  gap: 20px;
+  width: 150px;            /* фиксированная ширина */
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
   margin-bottom: 20px;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
+  text-decoration: underline; /* подчёркивание текста */
+  color: #333;
+  font-weight: bold;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  cursor: pointer; /* курсор при наведении */
 }
 
 .tool-card:hover {
   background-color: #f9f9f9;
+  color: #1d4f91;        /* меняем цвет текста при наведении */
+  transform: scale(1.05); /* легкое увеличение */
 }
 
+/* Картинка */
 .tool-card img {
-  width: 50px;
+  width: 100px;
   height: auto;
-}
-
-.tool-card span {
-  font-weight: bold;
-  font-size: 1.1em;
-  color: #333;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #f4f4f4;
-  margin-top: 40px;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-/* Headings */
-h2 {
-  text-align: center;
-  color: #34495e;
-  margin-bottom: 15px;
-}
-
-h3 {
-  color: #3a5068;
   margin-bottom: 10px;
 }
 
-/* List styles */
-ul {
-  list-style-type: disc;
-  margin-left: 20px;
+/* Текст */
+.tool-card span {
+  display: block;
+  font-size: 1.1em;
+  color: inherit; /* цвет унаследован, меняется при hover */
 }
 
-/* Project cards */
-.project-list {
+/* Чтобы ссылки внутри карточек занимали всю площадь */
+.tool-card a {
+  color: inherit;
+  text-decoration: underline;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: center;
 }
 
-.project-card {
-  background-color: #ffffff;
-  padding: 20px;
-  border-left: 4px solid #4a90e2;
-  border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-3px);
-}
-
-.project-card h3 a {
-  text-decoration: none;
-  color: #1d4f91;
-}
-
-.project-card h3 a:hover {
-  text-decoration: underline;
-}
-
-/* Links */
-a {
-  color: #4a90e2;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive for mobile */
+/* Адаптив для мобильных */
 @media (max-width: 600px) {
-  body {
-    padding: 15px;
-  }
-
-  nav a {
-    display: inline-block;
-    margin-bottom: 10px;
+  .tool-buttons {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
   }
 
   .tool-card {
-    flex-direction: column;
-    align-items: flex-start;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none; /* убираем подчеркивание в мобильном виде */
+  }
+
+  .tool-card img {
+    width: 50px;
+    margin-bottom: 0;
+    margin-right: 15px;
+  }
+
+  .tool-card span {
+    font-size: 1.1em;
+    color: #333;
   }
 }
