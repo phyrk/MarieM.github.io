@@ -30,60 +30,15 @@
     <a href="python-projects_excel-remittance.html ">📁 Excel Remittance Validator for SAP Clearing</a>
   </h3>
   <p>
-    Business Scenario: 
 
-In the SAP environment, providers may submit one lump-sum payment (credit) that corresponds to multiple individual claims. These claims arrive as Excel files (one per store or batch), typically named with a transaction date. 
-
-The script performs the following: 
-
-✅ Ensures all expected remittance files for a given payment date are present 
-
-✅ Combines the claim data into a single structured dataset 
-
-✅ Matches claims with a master provider list to enrich data (Store #, SAP Store #) 
-
-✅ Generates unique SAP clearing references for each claim in the format S{SAP Store}00{Rx Number} 
-
-✅ Outputs two Excel sheets: 
-
-Summary: total amounts per store and source file 
-
-Full Merge: detailed claim data with SAP references 
-
-This output is used for automatic clearing of the invoice (payment) in SAP. 
-  </p>
-      <ul>
-        <li>✅ Validates file presence and totals</li>
-        <li>🔗 Enriches with provider info (Store #)</li>
-        <li>📁 Outputs Summary and Full Merge Excel files</li>
-      </ul>
-      <h4>Tech Stack</h4>
-      <ul>
-        <li>Python, Pandas, OpenPyXL</li>
-      </ul>
-      <h4>Gist</h4>
-      <script src="https://gist.github.com/YOUR_USERNAME/YOUR_GIST_ID.js"></script>
-    </section>
-
+ 
     <!-- Project 2 (example placeholder) -->
-    <section>
-      <h3>📁 Automated Email Parser for Service Reports</h3>
-      <p>
-        A Python script that connects to an inbox, extracts service reports, cleans the data, and sends summaries to stakeholders. Used for internal operations monitoring.
-      </p>
-      <ul>
-        <li>📧 Connects to Outlook inbox</li>
-        <li>🧹 Cleans inconsistent Excel report formats</li>
-        <li>📊 Generates weekly summary by department</li>
-      </ul>
-      <h4>Tech Stack</h4>
-      <ul>
-        <li>Python, Pandas, IMAPClient, xlrd</li>
-      </ul>
-      <!-- Optionally embed another gist -->
-      <!-- <script src="https://gist.github.com/YOUR_USERNAME/YOUR_SECOND_GIST_ID.js"></script> -->
-    </section>
-
+     <main>
+    <h2>Python in Real-World Business Scenarios</h2>
+    <p class="intro-text">
+      Explore Python-based automation and data-processing solutions used to solve real business challenges efficiently and at scale.
+    </p>
+    
     <a href="projects.html" class="button">← Back to Technologies</a>
   </main>
 
