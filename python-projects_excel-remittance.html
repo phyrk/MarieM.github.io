@@ -20,7 +20,8 @@
   <main>
     <h2 class="project-title">📁 Excel Remittance Validator for SAP Clearing</h2>
 
-    <p><strong>Description:</strong> This Python script automates the validation and preparation of remittance data received from a provider. 
+  <h3>Description:</h3> 
+      <p>This Python script automates the validation and preparation of remittance data received from a provider. 
       The provider submits multiple Excel files representing prescription claims. 
       These files collectively support a payment (posted as a single credit in SAP). 
       The script ensures all claims are present and aligned with the invoice and generates a reference file for automated clearing in SAP. </p>
@@ -28,20 +29,16 @@
     <h3> Business Scenario</h3>
     <p>In the SAP environment, providers may submit one lump-sum payment (credit) that corresponds to multiple individual claims. These claims arrive as Excel files (one per store or batch), typically named with a transaction date. 
 
-The script performs the following: 
+<p>The script performs the following:</p>
+<ul>
+  <li>✅ Ensures all expected remittance files for a given payment date are present</li>
+  <li>✅ Combines the claim data into a single structured dataset</li>
+  <li>✅ Matches claims with a master provider list to enrich data (Store #, SAP Store #)</li>
+  <li>✅ Generates unique SAP clearing references for each claim in the format S{SAP Store}00{Rx Number}</li>
+  <li>✅ Outputs two Excel sheets:</li>
+</ul>
 
-✅ Ensures all expected remittance files for a given payment date are present 
-
-✅ Combines the claim data into a single structured dataset 
-
-✅ Matches claims with a master provider list to enrich data (Store #, SAP Store #) 
-
-✅ Generates unique SAP clearing references for each claim in the format S{SAP Store}00{Rx Number} 
-
-✅ Outputs two Excel sheets: 
-
-Summary: total amounts per store and source file 
-
+<p><strong>Summary:</strong> total amounts per store and source file</p>
 Full Merge: detailed claim data with SAP references.</p>
 
     <h3>✅ Key Features</h3>
@@ -60,8 +57,11 @@ Full Merge: detailed claim data with SAP references.</p>
       <li>OpenPyXL</li>
     </ul>
 
-    <h3>Code Example</h3>
-    <script src="https://gist.github.com/phyrk/603bb4d5f67bac0d01fbe807319cf48e.js"></script>
+   <h3>Code Example</h3>
+<a href="https://gist.github.com/phyrk/603bb4d5f67bac0d01fbe807319cf48e" target="_blank">
+  <button>🔍 View Code on Gist</button>
+</a>
+
 
     <a href="python-projects.html" class="button">← Back to Python Projects</a>
   </main>
