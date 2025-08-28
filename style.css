@@ -208,3 +208,24 @@ a:hover {
     margin: 0 auto;
   }
 }
+.project-list {
+  list-style: none;
+  padding: 0;
+  max-width: 700px;
+  margin: 30px auto;
+  font-size: 1.2rem;
+}
+
+.project-list li {
+  margin-bottom: 15px;
+}
+
+.project-list a {
+  color: #1d3557;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.project-list a:hover {
+  color: #e63946;
+}
