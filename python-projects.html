@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Header -->
   <header>
     <h1>Marie Makarenko</h1>
     <nav>
@@ -18,15 +19,50 @@
   </header>
 
   <main>
-    <h2>Python in Real Business Use Cases</h2>
+    <h2>🐍 Python in Real-World Business Scenarios</h2>
     <p class="intro-text">
-      A collection of Python-based solutions focused on data automation, validation, and reporting used in real-world business workflows.
+      Explore Python-based automation and data-processing solutions used to solve real business challenges efficiently and at scale.
     </p>
 
-    <ul class="project-list">
-      <li><a href="project1.html">📁 Excel Remittance Validator for SAP Clearing</a></li>
-      <!-- Add more projects here -->
-    </ul>
+    <!-- Project 1 -->
+    <section>
+      <h3>📁 Excel Remittance Validator for SAP Clearing</h3>
+      <p>
+        This Python script automates the validation and preparation of Excel remittance data from providers. It ensures all claims are present, reconciled, and generates structured outputs for SAP clearing.
+      </p>
+      <ul>
+        <li>✅ Validates file presence and totals</li>
+        <li>🔗 Enriches with provider info (Store #)</li>
+        <li>📁 Outputs Summary and Full Merge Excel files</li>
+      </ul>
+      <h4>Tech Stack</h4>
+      <ul>
+        <li>Python, Pandas, OpenPyXL</li>
+      </ul>
+      <h4>Gist</h4>
+      <script src="https://gist.github.com/YOUR_USERNAME/YOUR_GIST_ID.js"></script>
+    </section>
+
+    <!-- Project 2 (example placeholder) -->
+    <section>
+      <h3>📁 Automated Email Parser for Service Reports</h3>
+      <p>
+        A Python script that connects to an inbox, extracts service reports, cleans the data, and sends summaries to stakeholders. Used for internal operations monitoring.
+      </p>
+      <ul>
+        <li>📧 Connects to Outlook inbox</li>
+        <li>🧹 Cleans inconsistent Excel report formats</li>
+        <li>📊 Generates weekly summary by department</li>
+      </ul>
+      <h4>Tech Stack</h4>
+      <ul>
+        <li>Python, Pandas, IMAPClient, xlrd</li>
+      </ul>
+      <!-- Optionally embed another gist -->
+      <!-- <script src="https://gist.github.com/YOUR_USERNAME/YOUR_SECOND_GIST_ID.js"></script> -->
+    </section>
+
+    <a href="projects.html" class="button">← Back to Technologies</a>
   </main>
 
   <footer>
