@@ -21,21 +21,23 @@
     <h2 class="project-title">📁 Excel Remittance Validator for SAP Clearing</h2>
 
   <h3>Description:</h3> 
-      <p>This Python script automates the validation and preparation of remittance data received from a provider. 
-      The provider submits multiple Excel files representing prescription claims. 
-      These files collectively support a payment (posted as a single credit in SAP). 
-      The script ensures all claims are present and aligned with the invoice and generates a reference file for automated clearing in SAP. </p>
+      <p>This Python script was developed to streamline and accelerate the processing of high-volume remittance data received from a provider.
+
+Each payment cycle, the provider submits approximately 1,000 Excel files, totaling up to 800,000 rows of prescription claim data. These files, often organized by store or transaction batch, collectively support a single lump-sum payment, which is posted in SAP as one credit.
+
+To manage this volume efficiently and eliminate manual effort, the script automates the following steps: </p>
 
     <h3> Business Scenario</h3>
     <p>In the SAP environment, providers may submit one lump-sum payment (credit) that corresponds to multiple individual claims. These claims arrive as Excel files (one per store or batch), typically named with a transaction date. 
 
 <p>The script performs the following:</p>
 <ul>
-  <li>✅ Ensures all expected remittance files for a given payment date are present</li>
-  <li>✅ Combines the claim data into a single structured dataset</li>
-  <li>✅ Matches claims with a master provider list to enrich data (Store #, SAP Store #)</li>
-  <li>✅ Generates unique SAP clearing references for each claim in the format S{SAP Store}00{Rx Number}</li>
-  <li>✅ Outputs two Excel sheets:</li>
+  <li>✅ File validation: Ensures all expected remittance files for a given payment date are present</li>
+  <li>✅ Data merge: Consolidates all claim data into a single structured dataset</li>
+  <li>✅ Data enrichment: Matches each claim with a master provider list to attach key identifiers (e.g., Store #, SAP Store #)</li>
+  <li>✅ Deduplication and cleanup: Cleans the merged dataset (within MASTER_FILE_PATH) to remove any duplicate claims and prevent overstatement of payment amounts</li>
+  <li>✅ Reference generation: Creates unique SAP clearing references for each claim in the format S{SAP Store}00{Rx Number}</li>
+  <li>✅ Final output: Produces a clean, formatted Excel file tailored for automated clearing in SAP, along with a secondary summary sheet if needed</li>
 </ul>
 
       <h2>Summary:<h2> total amounts per store and source file</p>
