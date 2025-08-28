@@ -25,11 +25,33 @@
     </p>
 
     <!-- Project 1 -->
-    <section>
-      <h3>📁 Excel Remittance Validator for SAP Clearing</h3>
-      <p>
-        This Python script automates the validation and preparation of Excel remittance data from providers. It ensures all claims are present, reconciled, and generates structured outputs for SAP clearing.
-      </p>
+ <section>
+  <h3>
+    <a href="python-projects_excel-remittance.html ">📁 Excel Remittance Validator for SAP Clearing</a>
+  </h3>
+  <p>
+    Business Scenario: 
+
+In the SAP environment, providers may submit one lump-sum payment (credit) that corresponds to multiple individual claims. These claims arrive as Excel files (one per store or batch), typically named with a transaction date. 
+
+The script performs the following: 
+
+✅ Ensures all expected remittance files for a given payment date are present 
+
+✅ Combines the claim data into a single structured dataset 
+
+✅ Matches claims with a master provider list to enrich data (Store #, SAP Store #) 
+
+✅ Generates unique SAP clearing references for each claim in the format S{SAP Store}00{Rx Number} 
+
+✅ Outputs two Excel sheets: 
+
+Summary: total amounts per store and source file 
+
+Full Merge: detailed claim data with SAP references 
+
+This output is used for automatic clearing of the invoice (payment) in SAP. 
+  </p>
       <ul>
         <li>✅ Validates file presence and totals</li>
         <li>🔗 Enriches with provider info (Store #)</li>
