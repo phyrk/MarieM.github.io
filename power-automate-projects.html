@@ -76,7 +76,7 @@ With this solution:
 
 
 <h4> Step 2: Duplicate Detection</h4>
-<p> Checks existing entries in <strong>SharePoint</strong> to prevent duplicate refund processing using key fields:</p>
+<p> Checks existing entries in <strong>SharePointList</strong> to prevent duplicate refund processing using key fields:</p>
 <ul>
   <li>Customer ID</li>
   <li>Amount</li>
@@ -100,14 +100,14 @@ With this solution:
 
 
 <h4> Step 3: Request Processing</h4>
-<p>📝 If the request is <strong>unique</strong>, it gets logged in <strong>SharePoint</strong>.</p>
-<p>📦 Routes the request to the correct <strong>approval group</strong> based on the <strong>payment method</strong>:</p>
+<p> If the request is <strong>unique</strong>, it gets logged in <strong>SharePointList</strong>.</p>
+<p> Routes the request to the correct <strong>approval group</strong> based on the <strong>payment method</strong>:</p>
 <ul>
   <li>💳 Credit Card</li>
   <li>💻 Online Payments</li>
   <li>🧾 Check</li>
 </ul>
-<p>Each group is dynamically defined via the <strong>Excel config</strong>.</p>
+
 
 
 
