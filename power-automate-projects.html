@@ -22,12 +22,105 @@
     <p class="intro-text">
       Automation workflows built with Power Automate to streamline business processes across Microsoft 365 and other platforms.
     </p>
+  <h3>Description:</h3> 
+      <p>TThis Power Automate flow automates the end-to-end processing and approval of customer refund requests submitted by the operations team through an Excel-based form. The flow supports multiple payment types (Credit Card, Online Payments, Checks) and routes requests dynamically to different approval groups based on the amount and method of payment.
 
-    <ul class="project-list">
-      <li><a href="pa-project1.html">📁 Power Automate Project 1</a></li>
-      <!-- Add more projects here -->
-    </ul>
-  </main>
+It ensures data consistency, prevents duplicate requests, and streamlines multi-level approvals via Microsoft Teams and SharePoint integration. </p>
+
+    <h3> Business Scenario</h3>
+    <p>In a real-world customer service environment, refund requests were previously managed manually via email and Excel files, leading to delays, missed approvals, and duplicate processing.
+
+With this solution:
+
+<li> ✔️ The operations team fills out a refund request form embedded in an Excel file stored in OneDrive/SharePoint.</li>
+
+<li> ✔️ When the “Submit” button is clicked, the Power Automate flow is triggered via HTTP Request.</li>
+
+<li> ✔️ The request is validated, routed, approved/rejected, and recorded in SharePoint, with real-time updates sent to all stakeholders.</li>
+<p>The script performs the following:</p>
+
+    <h3>Flow Logic & Features</h3>
+<h2>✅ Trigger</h2>
+<p>💡 <strong>Manual Trigger</strong> via HTTP Request — activated directly from a button in an <strong>Excel form</strong>.</p>
+
+<hr>
+
+<h2>🧾 Step 1: Data Retrieval</h2>
+<p>📥 Retrieves refund request data and approver configuration from multiple <strong>Excel tables</strong>.</p>
+<p>🔀 Supports <strong>tiered logic</strong> based on:</p>
+<ul>
+  <li>Refund amount</li>
+  <li>Payment method</li>
+  <li>CC recipients</li>
+</ul>
+
+<hr>
+
+<h2>🧼 Step 2: Duplicate Detection</h2>
+<p>🔍 Checks existing entries in <strong>SharePoint</strong> to prevent duplicate refund processing using key fields:</p>
+<ul>
+  <li>Customer ID</li>
+  <li>Amount</li>
+  <li>Date</li>
+</ul>
+<p>🚫 If a duplicate is found:</p>
+<ul>
+  <li>Sends an <strong>email notification</strong> to the requester</li>
+  <li><strong>Stops the flow</strong> — no further processing</li>
+</ul>
+
+<hr>
+
+<h2>🔁 Step 3: Request Processing</h2>
+<p>📝 If the request is <strong>unique</strong>, it gets logged in <strong>SharePoint</strong>.</p>
+<p>📦 Routes the request to the correct <strong>approval group</strong> based on the <strong>payment method</strong>:</p>
+<ul>
+  <li>💳 Credit Card</li>
+  <li>💻 Online Payments</li>
+  <li>🧾 Check</li>
+</ul>
+<p>Each group is dynamically defined via the <strong>Excel config</strong>.</p>
+
+<hr>
+
+<h2>📩 Step 4: Approval Workflow</h2>
+<p>📨 Sends <strong>approval requests</strong> using:</p>
+<ul>
+  <li>Microsoft Teams Adaptive Cards</li>
+  <li>Or email-based approvals (if Teams is not used)</li>
+</ul>
+<p>📌 Captures decisions (<strong>Approve</strong> / <strong>Reject</strong>) and logs results in SharePoint.</p>
+
+<hr>
+
+<h2>📬 Step 5: Notifications & Logging</h2>
+
+<h3>✅ On Approval:</h3>
+<ul>
+  <li>Updates SharePoint item status to: <strong>Approved</strong></li>
+  <li>Sends a <strong>confirmation email</strong> to the requester</li>
+</ul>
+
+<h3>❌ On Rejection:</h3>
+<ul>
+  <li>Updates SharePoint item status to: <strong>Rejected</strong></li>
+  <li>Sends an <strong>email with rejection reason</strong></li>
+</ul>
+
+    
+<h3>Code Example</h3>
+
+<a href="https://gist.github.com/phyrk/603bb4d5f67bac0d01fbe807319cf48e" target="_blank">
+  <button>📂 View Code </button>
+</a>
+
+
+
+    
+<div>
+  <a href="python-projects.html" class="button">← Back to Python Projects</a>
+</div>
+
 
   <footer>
     <p>© 2025 Marie Makarenko</p>
