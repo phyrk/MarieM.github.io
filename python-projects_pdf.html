@@ -40,39 +40,72 @@
 
 </div>
 
-    <h3> Business Scenario</h3>
-    <p>In the SAP environment, providers may submit one lump-sum payment (credit) that corresponds to multiple individual claims. These claims arrive as Excel files (one per store or batch), typically named with a transaction date. 
+    <h3> Solution</h3>
+    <p>I developed a Python-based automation that drastically simplified the process and reduced the manual workload. </p>
+    <h4>Workflow Overview:</h4>
+<p>1.Single PDF Generation</p>
 
-<p>The script performs the following:</p>
+  <p>  Instead of generating invoices one by one, the user now selects a date range on the portal and downloads a single combined PDF that contains all vendor invoices. Each invoice conveniently starts on a new page.</p>
+<p>2.PDF Splitting</p>
+<p> Using PyPDF2, my script:</p>
 <ul>
-  <li>✅ File validation: Ensures all expected remittance files for a given payment date are present</li>
-  <li>✅ Data merge: Consolidates all claim data into a single structured dataset</li>
-  <li>✅ Data enrichment: Matches each claim with a master provider list to attach key identifiers (e.g., Store #, SAP Store #)</li>
-  <li>✅ Deduplication and cleanup: Cleans the merged dataset (within MASTER_FILE_PATH) to remove any duplicate claims and prevent overstatement of payment amounts</li>
-  <li>✅ Reference generation: Creates unique SAP clearing references for each claim in the format S{SAP Store}00{Rx Number}</li>
-  <li>✅ Final output: Produces a clean, formatted Excel file tailored for automated clearing in SAP, along with a secondary summary sheet if needed</li>
+
+  <li>✅ Reads the combined invoice PDF</li>
+  <li>✅ Extracts specific text from each page</li>
+  <li>✅ Identifies the vendor name using a regex pattern</li>
+  <li>✅ Splits and saves each page (or group of pages) into separate PDFs per vendor</li>
+
+</ul>
+<p>3.Automated Email Dispatch</p>
+<ul>
+
+  <li>✅ Vendor emails are stored in an Excel sheet (List.xlsx)</li>
+  <li>✅ For each split invoice, the script matches the vendor name to their email</li>
+  <li>✅ Using win32com.client, it sends out individual emails through Outlook with the corresponding invoice attached</li>
+  <li>✅ Unmatched or missing emails are logged into an Excel file for review</li>
+
 </ul>
 
+  <p>4.Zipping Files (Optional)</p>  
 
-    <h3>Key Features</h3>
+
+ <p> All split invoices can be zipped for storage or bulk upload if needed.</p>
+
+
+    <h3>Impacts</h3>
     <ul>
-      <li>File presence validation based on remittance date (e.g. 2025-06-24) </li>
-      <li>Automatic reconciliation of total amount paid</li>
-      <li>Provider ID enrichment from a master listn</li>
-      <li>Reference creation for SAP clearing</li>
-      <li>Outputs Excel report with clean structure for accounting teams </li>
+      <li>Time Saved: Reduced processing time from ~3 hours to just 15 minutes</li>
+      <li>Scalability: Works seamlessly for 250+ vendors with minimal changes</li>
+      <li>Error Reduction: Automated name and email matching eliminates manual copy-paste mistakes</li>
+      <li>Background Execution: Frees up the employee’s time to focus on higher-value tasks</li>
+      
     </ul>
 
-    <h3>Tech Stack</h3>
+        <h3>Tools & Libraries Used</h3>
     <ul>
       <li>Python</li>
       <li>Pandas</li>
-      <li>OpenPyXL</li>
+      <li>PyPDF2</li>
+      <li>re (Regex)</li>
+      <li>win32com.client (Outlook integration)</li>
+      <li>openpyxl (for Excel handling)</li>
+      <li>zipfile</li>
     </ul>
+
+   <h3>Code Structure</h3>
+
+    <p> The code is split into two main components:</p>
+
+  <ul>
+      <li>Splits a combined invoice PDF into individual files</li>
+      <li>Splits a combined invoice PDF into individual files</li>
+   
+    </ul>
+
 
 <h3>Code Example</h3>
 
-<a href="https://gist.github.com/phyrk/603bb4d5f67bac0d01fbe807319cf48e" target="_blank">
+<a href="https://gist.github.com/phyrk/da0936e6afdc2e12c9bc6dd492c5ec06" target="_blank">
   <button>📂 View Code </button>
 </a>
 
