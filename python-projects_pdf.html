@@ -22,7 +22,7 @@
 
   <h3>Problem:</h3> 
       <p>Our team used to manually download and send weekly invoice PDFs to over 250 vendors. The process involved: </p>
-<ul>
+    <ul style="list-style-type: none; padding-left: 0;">
    <li>✅  Extracting client names from an Excel list</li>
 
    <li>✅Visiting a web portal</li>
@@ -50,19 +50,19 @@
 <p> Using PyPDF2, my script:</p>
 <ul>
 
-  <li>✅ Reads the combined invoice PDF</li>
-  <li>✅ Extracts specific text from each page</li>
-  <li>✅ Identifies the vendor name using a regex pattern</li>
-  <li>✅ Splits and saves each page (or group of pages) into separate PDFs per vendor</li>
+  <li> Reads the combined invoice PDF</li>
+  <li> Extracts specific text from each page</li>
+  <li> Identifies the vendor name using a regex pattern</li>
+  <li> Splits and saves each page (or group of pages) into separate PDFs per vendor</li>
 
 </ul>
 <p>3.Automated Email Dispatch</p>
 <ul>
 
-  <li>✅ Vendor emails are stored in an Excel sheet (List.xlsx)</li>
-  <li>✅ For each split invoice, the script matches the vendor name to their email</li>
-  <li>✅ Using win32com.client, it sends out individual emails through Outlook with the corresponding invoice attached</li>
-  <li>✅ Unmatched or missing emails are logged into an Excel file for review</li>
+  <li> Vendor emails are stored in an Excel sheet (List.xlsx)</li>
+  <li> For each split invoice, the script matches the vendor name to their email</li>
+  <li> Using win32com.client, it sends out individual emails through Outlook with the corresponding invoice attached</li>
+  <li> Unmatched or missing emails are logged into an Excel file for review</li>
 
 </ul>
 
