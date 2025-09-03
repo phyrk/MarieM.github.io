@@ -1,1 +1,112 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Power Automate Projects | Marie Makarenko</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Marie Makarenko</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="tools.html">Tools</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Power Automate Projects</h2>
+    <p class="intro-text">
+      Automation workflows built with Power Automate to streamline business processes across Microsoft 365 and other platforms.
+    </p>
+  <h3>Description:</h3> 
+      <p>TTo streamline a time-consuming and error-prone process, I built a Power Automate flow that automatically collects and organizes technician timesheets submitted via email.
+        What was previously a manual task shared between three team members — each spending hours every week — is now a fully automated workflow integrated with SharePoint and Power Query,
+        allowing a single person to complete the entire process in minutes. </p>
+
+    <h3> Business Problem</h3>
+    <p>Once a week, our field technicians submit their timesheets (~200+ files) via email to a shared Outlook mailbox. Each file contains detailed hour breakdowns for:
+
+      <ul style="list-style-type: none; padding-left: 0;">
+
+<li>✅ Regular Hours</li>
+
+<li>✅ Overtime Hours</li>
+
+<li>✅ Double Time</li>
+      
+<li>✅ Lead Hand Hours</li>
+<li>✅ Gas Ticket Hours</li>       
+<li>✅ Refrigeration/Electrical Hours</li>       
+ <li>✅ Night Shift Premium</li>            
+    </p>
+<div style="text-align: left;">
+ <a href="images/PowerAutomate/TimesheetExample.png" target="_blank">
+   <img src="images/PowerAutomate/TimesheetExample.png" alt="TimesheetExample" style="max-width: 800px; width: 100%; height: auto;" />
+</a>
+ 
+
+</div>
+    <h3>Payroll Flow</h3>
+
+<p> I built a Power Automate flow that completely eliminated the manual collection step and streamlined the entire process.</p>
+        
+ <li> <strong>Trigger</strong> The flow starts when a new email arrives in the shared mailbox <strong>when a new email arrives in the shared mailbox (When a new email arrives (V3) trigger)</strong>.</li>
+
+ <li> <strong>Attachments:</strong>For each incoming email, it checks for attachments (Excel or CSV timesheets)</li>
+ <li> <strong>Storage:</strong>All attachments are automatically saved to SharePoint in a centralized folder, using the Create file action inside an Apply to each loop</li>
+ <li> <strong>Reporting:</strong>The data is then loaded into a Power Query-powered report, which:</li>
+                  <ul>
+                <li>Merges all timesheets</li>
+                <li>Applies pay rates based on role/region</li>
+                <li>Outputs a clean compensation summary</li>
+                </ul>
+
+<div style="text-align: left;">
+
+ <a href="images/PowerAutomate/Payroll flow.png" target="_blank">
+  <img src="images/PowerAutomate/Payroll flow.png" alt="Payroll flow" style="max-width: 800px; width: 100%; height: auto; cursor: zoom-in;" />
+</a>
+
+
+ </div>
+
+  <h3>Result</h3>    
+    <ul style="list-style-type: none; padding-left: 0;">
+
+<li>✅ Time saved: Reduced from ~10 hours/week to just 15 minutes</li>
+
+<li>✅ Scalability: Works for any number of incoming timesheets</li>
+
+<li>✅ Simplicity: One team member can now complete the entire weekly process without manual work</li>
+      
+<li>✅ Accuracy: Removes copy-paste errors and ensures consistent calculations</li>
+
+  <h3>Tools Used</h3>
+    <ul>
+      <li>Power Automate (Outlook, SharePoint)</li>
+      <li>Power Query (Excel)</li>
+      <li>Shared Mailbox</li>
+      <li>Dynamic file handling</li>
+    
+    </ul>
+
+
+
+
+
+<div>
+  <a href="power-automate-projects.html" class="button">← Back to Power Automate Projects</a>
+</div>
+
+
+  <footer>
+    <p>© 2025 Marie Makarenko</p>
+  </footer>
+</body>
+</html>
+
