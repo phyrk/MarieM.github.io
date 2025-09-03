@@ -1,1 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Power Automate Projects | Marie Makarenko</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Marie Makarenko</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="tools.html">Tools</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
+  <main>
+    <h2>Power Automate Projects</h2>
+    <p class="intro-text">
+      Automation workflows built with Power Automate to streamline business processes across Microsoft 365 and other platforms.
+    </p>
+  <h3>Description:</h3> 
+      <p>This Power Automate flow automates the end-to-end processing and approval of customer refund requests submitted by the operations team through an Excel-based form. The flow supports multiple payment types (Credit Card, Online Payments, Checks) and routes requests dynamically to different approval groups based on the amount and method of payment.
+
+It ensures data consistency, prevents duplicate requests, and streamlines multi-level approvals via Microsoft Teams and SharePoint integration. </p>
+
+    <h3> Business Scenario</h3>
+    <p>In a real-world customer service environment, refund requests were previously managed manually via email and Excel files, leading to delays, missed approvals, and duplicate processing.
+
+With this solution:
+      <ul style="list-style-type: none; padding-left: 0;">
+
+<li>✅ Eliminates manual processing and email chains</li>
+
+<li>✅ Prevents duplicate refunds via validation logic</li>
+
+<li>✅ Reduces approval turnaround time by routing to the correct group instantlyc</li>
+      
+<li>✅ Creates a clear audit trail in SharePoint</li>
+    </p>
+<div style="text-align: left;">
+ <a href="images/PowerAutomate/PA_Flow.png" target="_blank">
+   <img src="images/PowerAutomate/PA_Flow.png" alt="Power Automate Flow" style="max-width: 800px; width: 100%; height: auto;" />
+</a>
+ 
+
+</div>
+    <h3>Refund Request Flow</h3>
+
+<h4> Step 1: Data Retrieval</h4>
+        
+ <li> <strong>Manual Trigger</strong> via HTTP Request — activated directly from a button in an <strong>Excel form</strong>.</li>
+
+ <li> Retrieves refund request data and approver configuration from multiple <strong>Excel tables</strong>.</li>
+ <li> Supports <strong>tiered logic</strong> based on:</p>
+<ul>
+  <li>Refund amount</li>
+  <li>Payment method</li>
+  <li>CC recipients</li>
+</ul>
+
+<div style="text-align: left;">
+
+ <a href="images/PowerAutomate/Excel_file.png" target="_blank">
+  <img src="images/PowerAutomate/Excel_file.png" alt="Power Query" style="max-width: 800px; width: 100%; height: auto; cursor: zoom-in;" />
+</a>
+
+
+ 
+
+</div>
+
+
+
+<h4> Step 2: Duplicate Detection</h4>
+<p> Checks existing entries in <strong>SharePointList</strong> to prevent duplicate refund processing using key fields:</p>
+<ul>
+  <li>Customer ID</li>
+  <li>Amount</li>
+  <li>Date</li>
+</ul>
+<p> If a duplicate is found:</p>
+<ul>
+  <li>Sends an <strong>email notification</strong> to the requester</li>
+  <li><strong>Stops the flow</strong> — no further processing</li>
+</ul>
+<div style="text-align: left;">
+
+ <a href="images/PowerAutomate/Check duplicates.png" target="_blank">
+  <img src="images/PowerAutomate/Check duplicates.png" alt="Check duplicates" style="max-width: 800px; width: 100%; height: auto; cursor: zoom-in;" />
+</a>
+
+
+ 
+
+</div>
+
+
+<h4> Step 3: Request Processing</h4>
+<p> If the request is <strong>unique</strong>, it gets logged in <strong>SharePointList</strong>.</p>
+<p> Routes the request to the correct <strong>approval group</strong> based on the <strong>payment method</strong>:</p>
+<ul>
+  <li>💳 Credit Card</li>
+  <li>💻 Online Payments</li>
+  <li>🧾 Check</li>
+</ul>
+
+
+
+
+<h4> Step 4: Approval Workflow</h4>
+<p>📨 Sends <strong>approval requests</strong> using:</p>
+<ul>
+  <li>Microsoft Teams Adaptive Cards</li>
+  <li>Or email-based approvals (if Teams is not used)</li>
+</ul>
+<p>📌 Captures decisions (<strong>Approve</strong> / <strong>Reject</strong>) and logs results in SharePoint.</p>
+
+<div style="text-align: left;">
+
+ <a href="images/PowerAutomate/Approval.png" target="_blank">
+  <img src="images/PowerAutomate/Approval.png" alt="Approval" style="max-width: 800px; width: 100%; height: auto; cursor: zoom-in;" />
+</a>
+
+
+ 
+
+</div>
+
+<h4> Step 5: Notifications & Logging</h4>
+
+<h3>✅ On Approval:</h3>
+<ul>
+  <li>Updates SharePoint item status to: <strong>Approved</strong></li>
+  <li>Sends a <strong>confirmation email</strong> to the requester</li>
+</ul>
+
+<h3>❌ On Rejection:</h3>
+<ul>
+  <li>Updates SharePoint item status to: <strong>Rejected</strong></li>
+  <li>Sends an <strong>email with rejection reason</strong></li>
+</ul>
+
+    
+
+
+
+    
+<div>
+  <a href="power-automate-projects.html" class="button">← Back to Power Automate Projects</a>
+</div>
+
+
+  <footer>
+    <p>© 2025 Marie Makarenko</p>
+  </footer>
+</body>
+</html>
