@@ -19,26 +19,29 @@
   </header>
 
   <main>
-    <h2 class="project-title">Automating Credit Card & Online Payment Data Transformation </h2>
+    <h2 class="project-title">Health Economics: Analysis of Healthcare Costs (MEPS 2023) </h2>
 
   <h3>Description:</h3> 
-      <p>Each day, credit card and online payment files are uploaded into HRC (internal reconciliation system). These files need to be transformed and validated to match daily bank deposits before being loaded. 
+      <p>Analyze healthcare expenditures using MEPS data to 
+           <ul>
+<li> 1) describe cost distribution, </li>
+<li> 2) identify drivers of high spending, </li>
+<li> 3) predict high-cost patients.</li>
+ </ul>
+     </p>
 
-      Previously, this process involved manual file cleanup, multiple copy-paste steps, and a lot of attention to avoid mismatches between payment reports and bank data.  
-      Thanks to automation, the file processing time was reduced from 1 hour to just 5 minutes, significantly increasing efficiency and allowing staff to focus on higher-value tasks.</p>
-
-    <h3> Solution</h3>
-    <p>I developed an automated workflow using Power Query and VBA macros to streamline this daily process. </p>
+    <h3>DataSet</h3>
+    <p> Medical Expenditure Panel Survey (MEPS), HC-251 (2023 Full Year Consolidated File). </p>
 
 
     <h3>Key Features</h3>
     <ul>
-      <li> <strong>Dynamic Parameters in Power Query</strong> :The tool uses dynamic file paths and parameters to automatically switch between new data sources each day — no need to manually update queries.  </li>
-      <li> <strong>Data Transformation & Cleanup </strong> Raw payment files are cleaned and formatted through Power Query to meet HRC’s required structure.   </li>
-      <li> <strong>Validation Control </strong> An additional control step was added to verify that transformed totals match daily bank deposit records, helping catch discrepancies early.   </li>
-      <li> <strong>VBA Macros for Triggering </strong> A lightweight macro helps trigger the query refresh and final export to make the process one-click for end users.</li>
+      <li> <strong>Descriptive statistics</strong> :(mean, median, percentiles, Lorenz curve, Gini index).  </li>
+      <li> <strong>Inferential analysis </strong> (t-test, ANOVA, logistic regression, two-part model with Gamma distribution).  </li>
+      <li> <strong>- Predictive modeling </strong> (Logistic Regression, Random Forest) </li>
+
     
-    </ul>
+ <!--   </ul>
 <h3>Result </h3>
     <ul>
       <li> Time Saved: Reduced daily processing time significantly (exact hours depend on volume)   </li>
@@ -67,7 +70,7 @@
     <button>🔍 View Code on Gist</button>
   </a>
 </div>
-
+-->
 <div>
   <a href="Excel-projects.html" class="button">← Back to Excel Projects</a>
 </div>
