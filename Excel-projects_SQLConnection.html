@@ -1,1 +1,105 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Excel Power Query | Marie Makarenko</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Marie Makarenko</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="tools.html">Tools</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2 class="project-title">Automating Credit Card & Online Payment Data Transformation </h2>
+
+  <h3>Problem:</h3> 
+      <p>In a high-volume finance environment, daily credit card and online payment files needed to be reconciled against bank deposit reports and accurately posted to the correct client accounts in the internal reconciliation system (HRC).
+        Previously, this process required manual data cleanup, matching, and formatting, which was both time-consuming and error-prone.
+        I developed a fully automated pipeline that connects multiple data sources (including SQL Server) to clean, transform, validate, and prepare these files for upload
+        — reducing processing time from ~1 hour to 5 minutes and ensuring 100% alignment with bank and customer account data.</p>
+
+    <h3> Solution</h3>
+    <p>Analyzed the manual reconciliation workflow and identified key pain points related to data inconsistency and lack of validation.</p>
+    <p>Designed and built <strong> a parameter-driven Power Query pipeline </strong> integrating <strong>SQL Server </strong> to retrieve the latest Customer List daily to automate the data cleaning and transformation process.</p>
+    <p>Implemented <strong>automated validation logic </strong>to flag discrepancies between payment reports and bank deposits before loading into HRC.</p> 
+    <p>Used <strong>Excel VBA macros</strong> to simplify the process for end users by enabling one-click updates and exports.</p> 
+    
+ 
+<h3>Result </h3>
+    <ul>
+      <li> Time Saved: Reduced daily processing time significantly (exact hours depend on volume)   </li>
+      <li> Accuracy Improved: Automated control step ensures payment data aligns with bank deposits before upload    </li>
+      <li> Ease of Use: Designed for non-technical users — all they need to do is drop in the new file and click a button    </li>
+      <li> Scalability: Works with any number of daily files thanks to dynamic parameters </li>
+    
+    </ul>
+ 
+
+    <h3>Tech Stack</h3>
+    <ul>
+      <li>Power Query (ETL – extract, transform, load with parameterized data sources) </li>
+      <li>SQL Server (live connection to customer data) </li>
+      <li>Excel VBA (for automation) </li>
+      <li>Daily bank reports for validation  </li>
+
+    </ul>
+
+ 
+
+<h3>Code Example</h3>
+
+<div style="display: flex; flex-direction: column; gap: 25px; margin-top: 20px;">
+
+  <!-- SQL Connection Screenshot -->
+  <div>
+    <h4> SQL Connection</h4>
+    <img src="images/Excel/CustomerList.png" alt="SQL Connection Screenshot" style="max-width: 80%; height: auto; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0,0,0,0.1);">
+    <p style="font-size: 14px; color: #555;">
+      Power Query connected directly to SQL Server to pull live customer account data, ensuring payment records are matched correctly.
+    </p>
+  </div>
+
+  <!-- Power Query Parameterization -->
+  <div>
+    <h4> Power Query Parameterization</h4>
+    <img src="images/Excel/PowerQueryDynamicParameter.png" alt="Power Query Parameters" style="max-width: 35%; height: auto; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0,0,0,0.1);">
+    <p style="font-size: 14px; color: #555;">
+      Dynamic file paths and sheet names allow the queries to adapt automatically to daily files without manual editing.
+    </p>
+  </div>
+
+  <!-- VBA Automation Code -->
+<div>
+  <h4>VBA Automation Script</h4>
+  <div style="text-align: left;">
+    <a href="images/Excel/VBAcode.png" target="_blank">
+      <img src="images/Excel/VBAcode.png" alt="VBA Macro Code" style="max-width: 800px; width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0,0,0,0.1);">
+    </a>
+    <p style="font-size: 14px; color: #555;">
+      A lightweight VBA macro was used to automate the refresh and export process, making the entire workflow one-click for users.
+    </p>
+  </div>
+</div>
+
+
+
+
+<div>
+  <a href="Excel-projects.html" class="button">← Back to Excel Projects</a>
+</div>
+
+
+  <footer>
+    <p>© 2025 Marie Makarenko</p>
+  </footer>
+</body>
+</html>
