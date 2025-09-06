@@ -5,16 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Marie Makarenko – Senior Data Analyst</title>
   <link rel="stylesheet" href="style.css">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0N7NL4HQF3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N7NL4HQF3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0N7NL4HQF3');
+  </script>
+  <style>
+    /* уменьшаем блок Welcome */
+    section {
+      padding: 20px 15px;
+      margin: 20px auto;
+      max-width: 900px;
+    }
 
-  gtag('config', 'G-0N7NL4HQF3');
-</script>
-  
+    /* фото горизонтально */
+    .photo-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .photo-gallery img {
+      max-width: 45%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -34,7 +54,14 @@
       <p>I’m a data analyst with 12+ years of experience in data analytics, automation, and reporting. I specialize in building impactful, accessible dashboards and clean, actionable data stories — recently focused on applying my skills in community and humanitarian contexts.</p>
       <a href="resume.pdf" class="button">Download My Resume</a>
       <a href="https://linkedin.com/in/marie-makarenko" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </section>
 
+    <!-- новый блок с фото -->
+    <section>
+      <div class="photo-gallery">
+        <img src="images/Recognition1.jpg" alt="Project photo 1">
+        <img src="images/Recognition2.jpg" alt="Project photo 2">
+      </div>
     </section>
   </main>
 
@@ -43,4 +70,3 @@
   </footer>
 </body>
 </html>
-
