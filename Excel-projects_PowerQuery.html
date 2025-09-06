@@ -21,24 +21,19 @@
   <main>
     <h2 class="project-title">Automating Credit Card & Online Payment Data Transformation </h2>
 
-  <h3>Description:</h3> 
-      <p>Each day, credit card and online payment files are uploaded into HRC (internal reconciliation system). These files need to be transformed and validated to match daily bank deposits before being loaded. 
-
-      Previously, this process involved manual file cleanup, multiple copy-paste steps, and a lot of attention to avoid mismatches between payment reports and bank data.  
-      Thanks to automation, the file processing time was reduced from 1 hour to just 5 minutes, significantly increasing efficiency and allowing staff to focus on higher-value tasks.</p>
+  <h3>Problem:</h3> 
+      <p>In a high-volume finance environment, daily credit card and online payment files needed to be reconciled against bank deposit reports and accurately posted to the correct client accounts in the internal reconciliation system (HRC).
+        Previously, this process required manual data cleanup, matching, and formatting, which was both time-consuming and error-prone.
+        I developed a fully automated pipeline that connects multiple data sources (including SQL Server) to clean, transform, validate, and prepare these files for upload
+        — reducing processing time from ~1 hour to 5 minutes and ensuring 100% alignment with bank and customer account data.</p>
 
     <h3> Solution</h3>
-    <p>I developed an automated workflow using Power Query and VBA macros to streamline this daily process. </p>
-
-
-    <h3>Key Features</h3>
-    <ul>
-      <li> <strong>Dynamic Parameters in Power Query</strong> :The tool uses dynamic file paths and parameters to automatically switch between new data sources each day — no need to manually update queries.  </li>
-      <li> <strong>Data Transformation & Cleanup </strong> Raw payment files are cleaned and formatted through Power Query to meet HRC’s required structure.   </li>
-      <li> <strong>Validation Control </strong> An additional control step was added to verify that transformed totals match daily bank deposit records, helping catch discrepancies early.   </li>
-      <li> <strong>VBA Macros for Triggering </strong> A lightweight macro helps trigger the query refresh and final export to make the process one-click for end users.</li>
+    <p>Analyzed the manual reconciliation workflow and identified key pain points related to data inconsistency and lack of validation.</p>
+    <p>Designed and built <strong> a parameter-driven Power Query pipeline </strong> integrating <strong>SQL Server </strong> to retrieve the latest Customer List daily to automate the data cleaning and transformation process.</p>
+    <p>Implemented <strong>automated validation logic </strong>to flag discrepancies between payment reports and bank deposits before loading into HRC.</p> 
+    <p>Used <strong>Excel VBA macros</strong> to simplify the process for end users by enabling one-click updates and exports.</p> 
     
-    </ul>
+ 
 <h3>Result </h3>
     <ul>
       <li> Time Saved: Reduced daily processing time significantly (exact hours depend on volume)   </li>
@@ -51,9 +46,9 @@
 
     <h3>Tech Stack</h3>
     <ul>
-      <li>Power Query (with parameterized data sources) </li>
+      <li>Power Query (ETL – extract, transform, load with parameterized data sources) </li>
+      <li>SQL Server (live connection to customer data) </li>
       <li>Excel VBA (for automation) </li>
-      <li>HRC (internal reconciliation system) </li>
       <li>Daily bank reports for validation  </li>
 
     </ul>
@@ -62,11 +57,37 @@
 
 <h3>Code Example</h3>
 
-<div style="margin-bottom: 15px;">
-  <a href="https://gist.github.com/phyrk/603bb4d5f67bac0d01fbe807319cf48e.js" target="_blank">
-    <button>🔍 View Code on Gist</button>
-  </a>
+<div style="display: flex; flex-direction: column; gap: 25px; margin-top: 20px;">
+
+  <!-- SQL Connection Screenshot -->
+  <div>
+    <h4> SQL Connection</h4>
+    <img src="images/sql_connection.png" alt="SQL Connection Screenshot" style="max-width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0,0,0,0.1);">
+    <p style="font-size: 14px; color: #555;">
+      Power Query connected directly to SQL Server to pull live customer account data, ensuring payment records are matched correctly.
+    </p>
+  </div>
+
+  <!-- Power Query Parameterization -->
+  <div>
+    <h4> Power Query Parameterization</h4>
+    <img src="images/powerquery_parameters.png" alt="Power Query Parameters" style="max-width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0,0,0,0.1);">
+    <p style="font-size: 14px; color: #555;">
+      Dynamic file paths and sheet names allow the queries to adapt automatically to daily files without manual editing.
+    </p>
+  </div>
+
+  <!-- VBA Automation Code -->
+  <div>
+    <h4> VBA Automation Script</h4>
+    <img src="images/vba_code.png" alt="VBA Macro Code" style="max-width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0,0,0,0.1);">
+    <p style="font-size: 14px; color: #555;">
+      A lightweight VBA macro was used to automate the refresh and export process, making the entire workflow one-click for users.
+    </p>
+  </div>
+
 </div>
+📁 Что тебе нужно:
 
 <div>
   <a href="Excel-projects.html" class="button">← Back to Excel Projects</a>
