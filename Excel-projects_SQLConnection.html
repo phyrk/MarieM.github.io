@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Excel Power Query | Marie Makarenko</title>
+  <title>SQL connection| Marie Makarenko</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -19,40 +19,53 @@
   </header>
 
   <main>
-    <h2 class="project-title">Automating Credit Card & Online Payment Data Transformation </h2>
+    <h2 class="project-title">Migrating Internal Reporting from Manual SAP Exports to SQL-Based Automated Solution </h2>
 
   <h3>Problem:</h3> 
-      <p>In a high-volume finance environment, daily credit card and online payment files needed to be reconciled against bank deposit reports and accurately posted to the correct client accounts in the internal reconciliation system (HRC).
-        Previously, this process required manual data cleanup, matching, and formatting, which was both time-consuming and error-prone.
-        I developed a fully automated pipeline that connects multiple data sources (including SQL Server) to clean, transform, validate, and prepare these files for upload
-        — reducing processing time from ~1 hour to 5 minutes and ensuring 100% alignment with bank and customer account data.</p>
+      <p>When I joined the department, internal reporting was largely based on <strong> manual SAP data exports</strong>. Each team relied on custom Excel files with manual filters, and report-specific pivot tables. This led to: </p>
+
+ <ul>
+   <li> Delays in report updates</li>
+
+   <li> Risk of human error in data preparation</li>
+
+  <li> Lack of consistency across reports</li>
+
+  <li> Time-consuming maintenance and low flexibility for changes</li>
+     </ul>
+
 
     <h3> Solution</h3>
-    <p>Analyzed the manual reconciliation workflow and identified key pain points related to data inconsistency and lack of validation.</p>
-    <p>Designed and built <strong> a parameter-driven Power Query pipeline </strong> integrating <strong>SQL Server </strong> to retrieve the latest Customer List daily to automate the data cleaning and transformation process.</p>
-    <p>Implemented <strong>automated validation logic </strong>to flag discrepancies between payment reports and bank deposits before loading into HRC.</p> 
-    <p>Used <strong>Excel VBA macros</strong> to simplify the process for end users by enabling one-click updates and exports.</p> 
-    
+    <p>I proposed and led the transition from manual SAP data handling to a </strong>SQL-based reporting pipeline</strong>.
+    By connecting directly to the data source via SQL and using Power Query for transformation, we created dynamic, automated reports tailored to each team’s needs.</p>
+
+<p> This approach enabled:</p>
+    <p> Accurate and always up-to-date data.</p>
+    <p> Faster refreshes (no more copy-pasting).</p> 
+    <p> Custom filtering and logic in Power Query. </p> 
+   <p>  A scalable structure for new reports and future changes</p> 
  
-<h3>Result </h3>
+<h3>Collaboration </h3>
+
+<p> To ensure the new reporting structure met business requirements, I:</p>
+    
     <ul>
-      <li> Time Saved: Reduced daily processing time significantly (exact hours depend on volume)   </li>
-      <li> Accuracy Improved: Automated control step ensures payment data aligns with bank deposits before upload    </li>
-      <li> Ease of Use: Designed for non-technical users — all they need to do is drop in the new file and click a button    </li>
-      <li> Scalability: Works with any number of daily files thanks to dynamic parameters </li>
+      <li> Held discovery sessions with cross-functional finance teams (payments, collection, deduction, cash flow)  </li>
+      <li> Collected and clarified reporting needs and data logic   </li>
+      <li> Translated business questions into SQL logic and Power Query workflows   </li>
+    
+    </ul>
+
+<h3>Business Value </h3>
+    <ul>
+      <li></strong>Time Saved</strong>: Reduced daily processing time significantly (exact hours depend on volume)   </li>
+      <li> </strong>Data Accuracy</strong>: Eliminated manual errors and inconsistencies   </li>
+      <li> </strong>Better Decisions</strong>: Real-time, clean data enabled quicker and more confident business actions  </li>
+      <li> </strong>Scalability</strong>: New reports could be rolled out faster using the same connection and structure </li>
     
     </ul>
  
-
-    <h3>Tech Stack</h3>
-    <ul>
-      <li>Power Query (ETL – extract, transform, load with parameterized data sources) </li>
-      <li>SQL Server (live connection to customer data) </li>
-      <li>Excel VBA (for automation) </li>
-      <li>Daily bank reports for validation  </li>
-
-    </ul>
-
+    
  
 
 <h3>Code Example</h3>
@@ -60,26 +73,20 @@
 <div style="display: flex; flex-direction: column; gap: 25px; margin-top: 20px;">
 
   <!-- SQL Connection Screenshot -->
-  <div>
-    <h4> SQL Connection</h4>
-    <img src="images/Excel/CustomerList.png" alt="SQL Connection Screenshot" style="max-width: 80%; height: auto; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0,0,0,0.1);">
-    <p style="font-size: 14px; color: #555;">
-      Power Query connected directly to SQL Server to pull live customer account data, ensuring payment records are matched correctly.
-    </p>
-  </div>
-
-  <!-- Power Query Parameterization -->
-  <div>
-    <h4> Power Query Parameterization</h4>
-    <img src="images/Excel/PowerQueryDynamicParameter.png" alt="Power Query Parameters" style="max-width: 35%; height: auto; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0,0,0,0.1);">
-    <p style="font-size: 14px; color: #555;">
-      Dynamic file paths and sheet names allow the queries to adapt automatically to daily files without manual editing.
-    </p>
-  </div>
-
-  <!-- VBA Automation Code -->
 <div>
-  <h4>VBA Automation Script</h4>
+  <h4>SQL Connection Screenshot</h4>
+  <div style="text-align: left;">
+    <a href="images/Excel/VBAcode.png" target="_blank">
+      <img src="images/Excel/VBAcode.png" alt="VBA Macro Code" style="max-width: 800px; width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0,0,0,0.1);">
+    </a>
+    <p style="font-size: 14px; color: #555;">
+      A lightweight VBA macro was used to automate the refresh and export process, making the entire workflow one-click for users.
+    </p>
+  </div>
+</div>
+
+<div>
+  <h4>SQL Connection Screenshot</h4>
   <div style="text-align: left;">
     <a href="images/Excel/VBAcode.png" target="_blank">
       <img src="images/Excel/VBAcode.png" alt="VBA Macro Code" style="max-width: 800px; width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 2px 2px 8px rgba(0,0,0,0.1);">
